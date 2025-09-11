@@ -48,7 +48,7 @@ jobs:
       - name: Build local docker image
         uses: docker/build-push-action@v6
         with:
-          context: .
+          context:
           file: Dockerfile
           tags: ${{ needs.resolve-image-tag.outputs.tag }}
 
