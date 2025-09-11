@@ -2,6 +2,10 @@
 
 A simple GitHub Action for producing Jekyll build artifacts compatible with GitHub Pages.
 
+This fork extends the original `actions/jekyll-build-pages` by allowing the use of any Jekyll plugin during the build process.
+
+It is designed for users who need custom or third-party plugins that are not supported in the default GitHub Pages build environment, while still producing fully static artifacts ready for deployment.
+
 ## Scope
 
 This is used along with [`actions/deploy-pages`](https://github.com/actions/deploy-pages) as part of the official support for building Pages with Actions (currently in public beta for public repositories).
@@ -28,7 +32,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Build
-        uses: actions/jekyll-build-pages@v1
+        uses: bizouarn/jekyll-build-pages@v1
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
   deploy:
@@ -48,7 +52,7 @@ To write to a different destination directory, match the inputs of both the `jek
 ```yaml
 steps:
   - name: Build
-    uses: actions/jekyll-build-pages@v1
+    uses: bizouarn/jekyll-build-pages@v1
     with:
       destination: "./output"
   - name: Upload artifact
