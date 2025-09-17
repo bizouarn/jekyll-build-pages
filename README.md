@@ -6,10 +6,6 @@ This fork extends the original `actions/jekyll-build-pages` by allowing the use 
 
 It is designed for users who need custom or third-party plugins that are not supported in the default GitHub Pages build environment, while still producing fully static artifacts ready for deployment.
 
-## Scope
-
-This is used along with [`actions/deploy-pages`](https://github.com/actions/deploy-pages) as part of the official support for building Pages with Actions (currently in public beta for public repositories).
-
 ## Usage
 
 A basic Pages deployment workflow with the `jekyll-build-pages` action looks like this.
@@ -71,26 +67,6 @@ steps:
 | `build_revision` | `$GITHUB_SHA` | The SHA-1 of the Git commit for which the build is running |
 | `verbose` | `false` | If `true`, prints verbose output in logs |
 | `token` | `$GITHUB_TOKEN` | The GitHub token used to authenticate API requests |
-
-## Release instructions
-
-In order to release a new version of this Action:
-
-1. Locate the semantic version of the [upcoming release][release-list] (a draft is maintained by the [`draft-release` workflow][draft-release]).
-
-2. Prepare a pull request to update [`action.yml`][action.yml] to reference the incoming version, get it approved, and merge it into the `main` branch.
-
-3. Publish the draft release **as a pre-release** from the `main` branch with semantic version as the tag name, _with_:
-   - the checkbox to publish to the GitHub Marketplace checked :ballot_box_with_check:
-   - :warning: _AND_ the checkbox to **Set as a pre-release** checked. :ballot_box_with_check:
-
-4. This will kick off a [Docker publishing workflow][docker-publish] for the newly created tag. Check the [associated workflow run list][docker-publish-workflow-runs] to verify the new Docker image is created successfully before moving on to the next step.
-
-5. After the Docker image has been created with the new tag, find that [same pre-release][release-list] and edit it. Update it with the checkbox to **Set as the latest release** checked :ballot_box_with_check: and then publish it again.
-
-6. After publishing it as the latest release, the [`release` workflow][release] will automatically run to create/update the corresponding the major version tag such as `v1`.
-
-   ⚠️ Environment approval is required. Check the [Release workflow run list][release-workflow-runs].
 
 ## License
 
