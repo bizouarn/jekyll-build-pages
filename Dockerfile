@@ -1,4 +1,4 @@
-ARG RUBY_VERSION=3.3.9
+ARG RUBY_VERSION=3.3.11
 FROM ruby:$RUBY_VERSION-slim
 
 RUN apt-get update && apt-get install -y \
